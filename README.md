@@ -28,21 +28,33 @@ echo "GEMINI_API_KEY=YOUR_API_KEY" > .env
 
 ## Run
 
+### Run compiled JavaScript (after build)
 ```sh
+npm run build
 npm start
 ```
 
-You should see logs and a generated comic.json file.
+### Run TypeScript directly (requires ts-node)
+```sh
+npm run dev
+```
+
+### Or run with npx directly
+```sh
+npx ts-node comic-generator.ts
+```
+
+You should see logs and a generated `comic.json` file.
 
 ## Output
 The output is JSON with panels like:
 
-`json
+```json
 [
   {"panel":1,"scene":"...","dialogue":"...","imagePrompt":"..."},
-  ...
+  {"panel":2,"scene":"...","dialogue":"...","imagePrompt":"..."}
 ]
-`
+```
 
 ## Notes
 - This demo uses gemini-1.5-flash in the current code.
