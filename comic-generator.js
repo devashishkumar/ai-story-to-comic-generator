@@ -1,14 +1,20 @@
+const path = require("path");
+require("dotenv").config();
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const fs = require("fs");
 
-require("dotenv").config();
+if (!process.env.GEMINI_API_KEY) {
+  console.error("ERROR: GEMINI_API_KEY is missing. Add it to .env like GEMINI_API_KEY=your_key");
+  process.exit(1);
+}
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+console.log('API Key loaded successfully');
 
 // Convert story to comic panels
 async function storyToPanels(story) {
   const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash",
+    model: "gemini-2.0-flash",
   });
 
   const prompt = `
